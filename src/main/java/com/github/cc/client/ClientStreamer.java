@@ -35,6 +35,9 @@ public class ClientStreamer implements Runnable {
                     printWriter.println("\u001B[1H");
                 }
             }
+            printWriter.println("\u001B[2J");
+            printWriter.println("You've been Rickrolled in ASCII style!");
+            printWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
