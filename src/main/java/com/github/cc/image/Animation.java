@@ -16,8 +16,8 @@ public class Animation {
     private static Frame[] frames;
 
     public static void init() {
-        try (InputStream resourceAsStream =
-                new BufferedInputStream(ClassLoader.getSystemClassLoader().getResourceAsStream("card-cropped.gif"))) {
+        try (InputStream resourceAsStream = new BufferedInputStream(
+                ClassLoader.getSystemClassLoader().getResourceAsStream("card-cropped.gif"))) {
             final GifDecoder.GifImage gif = GifDecoder.read(resourceAsStream);
             final int frameCount = gif.getFrameCount();
             frames = new Frame[frameCount];
@@ -31,8 +31,8 @@ public class Animation {
     }
 
     private static BufferedImage prepare(BufferedImage orig) {
-        double scale = 0.1;
-        BufferedImage bi = new BufferedImage((int) (orig.getWidth() * scale), (int) (orig.getHeight() *scale),
+        double scale = 0.12;
+        BufferedImage bi = new BufferedImage((int) (orig.getWidth() * scale), (int) (orig.getHeight() * scale),
                 BufferedImage.TYPE_BYTE_GRAY);
         Graphics2D grph = (Graphics2D) bi.getGraphics();
         grph.scale(scale, scale);
