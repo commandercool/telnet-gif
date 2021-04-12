@@ -31,7 +31,7 @@ public class Animation {
     }
 
     private static BufferedImage prepare(BufferedImage orig) {
-        double scale = 0.12;
+        double scale = 0.1;
         BufferedImage bi = new BufferedImage((int) (orig.getWidth() * scale), (int) (orig.getHeight() * scale),
                 BufferedImage.TYPE_BYTE_GRAY);
         Graphics2D grph = (Graphics2D) bi.getGraphics();
