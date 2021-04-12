@@ -2,7 +2,9 @@ package com.github.cc.image;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import com.github.cc.decoder.GifDecoder;
 
@@ -14,9 +16,9 @@ public class Animation {
     private static Frame[] frames;
 
     public static void init() {
-        try {
-            final GifDecoder.GifImage gif =
-                    GifDecoder.read(Animation.class.getClassLoader().getResourceAsStream("card-cropped.gif"));
+        try (InputStream resourceAsStream =
+                new BufferedInputStream(ClassLoader.getSystemClassLoader().getResourceAsStream("card-cropped.gif"))) {
+            final GifDecoder.GifImage gif = GifDecoder.read(resourceAsStream);
             final int frameCount = gif.getFrameCount();
             frames = new Frame[frameCount];
             for (int i = 0; i < frameCount; i++) {
